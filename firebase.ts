@@ -1,8 +1,9 @@
-
 import { firebase } from '@firebase/app';
 import '@firebase/auth';
 import '@firebase/storage';
 import '@firebase/firestore';
+
+declare const FIREBASE_CONFIG;
 
 class FirebaseHelper {
 
@@ -24,16 +25,16 @@ class FirebaseHelper {
   }
 
   // Create a Singleton to help prevent initializing firebase more than once.
-  static getInstance() {
+  static getInstance(config) {
     if (!FirebaseHelper.instance)  {
-      FirebaseHelper.instance = new FirebaseHelper();
+      FirebaseHelper.instance = new FirebaseHelper(config);
     }
     return FirebaseHelper.instance;
   }
 
 }
 
-export let engageFire = FirebaseHelper.getInstance();
+export let engageFire = FirebaseHelper.getInstance(FIREBASE_CONFIG);
 
 export var User = (): any => { // this is the decorator factory
   if (!engageFire) {

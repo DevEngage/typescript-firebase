@@ -1,0 +1,27 @@
+{
+  "name": "@dev-engage/typescript-firebase",
+  "version": "0.1.0",
+  "description": "A helper module/library for typescript projects",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevEngage/typescript-firebase.git"
+  },
+  "keywords": [
+    "typescript",
+    "firebase"
+  ],
+  "dependencies": {
+    "firebase": "4.11.0"
+  },
+  "author": "DevEngage (James Brinkerhoff)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevEngage/typescript-firebase/issues"
+  },
+  "homepage": "https://github.com/DevEngage/typescript-firebase#readme"
+}
