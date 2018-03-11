@@ -1,6 +1,6 @@
 {
   "name": "@dev-engage/typescript-firebase",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A helper module/library for typescript projects",
   "main": "index.ts",
   "scripts": {
