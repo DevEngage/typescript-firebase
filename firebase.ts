@@ -2,6 +2,7 @@ import { firebase } from '@firebase/app';
 import '@firebase/auth';
 import '@firebase/storage';
 import '@firebase/firestore';
+import {User as FirebaseUser} from "@firebase/auth-types";
 
 declare const FIREBASE_CONFIG;
 
@@ -32,18 +33,32 @@ class FirebaseHelper {
     return FirebaseHelper.instance;
   }
 
+  getUser(): FirebaseUser {
+      return firebase.auth().currentUser;
+  }
+
+  /* TODO: */
+  subscribeUser() {
+    // return new Promise((resolve, reject) => {
+    //   firebase.auth().onAuthStateChanged((user) => {
+    //     this.user = user;
+    //       resolve(user);
+    //   });
+    // });
+  }
+
 }
 
-export let engageFire = FirebaseHelper.getInstance(FIREBASE_CONFIG);
+export const engageFire = FirebaseHelper.getInstance(FIREBASE_CONFIG);
 
 export var User = (): any => { // this is the decorator factory
   if (!engageFire) {
     console.log('still loading helper');
   }
-  return (target): any => { // this is the decorator
+  return (target): FirebaseUser => { // this is the decorator
     // do something with 'target' and 'value'...
     console.log(target);
-    return engageFire.user;
+    return engageFire.getUser();
   }
 };
 
