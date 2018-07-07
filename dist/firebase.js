@@ -1,7 +1,7 @@
-import { firebase } from '@firebase/app';
-import '@firebase/auth';
-import '@firebase/storage';
-import '@firebase/firestore';
+import * as firebase from 'firebase';
+import 'firebase/auth';
+import 'firebase/storage';
+import 'firebase/firestore';
 class FirebaseHelper {
     constructor(config) {
         this.config = config;
@@ -20,8 +20,20 @@ class FirebaseHelper {
         }
         return FirebaseHelper.instance;
     }
+    getUser() {
+        return firebase.auth().currentUser;
+    }
+    /* TODO: */
+    subscribeUser() {
+        // return new Promise((resolve, reject) => {
+        //   firebase.auth().onAuthStateChanged((user) => {
+        //     this.user = user;
+        //       resolve(user);
+        //   });
+        // });
+    }
 }
-export let engageFire = FirebaseHelper.getInstance(FIREBASE_CONFIG);
+export const engageFire = FirebaseHelper.getInstance(FIREBASE_CONFIG);
 export var User = () => {
     if (!engageFire) {
         console.log('still loading helper');
@@ -29,7 +41,7 @@ export var User = () => {
     return (target) => {
         // do something with 'target' and 'value'...
         console.log(target);
-        return engageFire.user;
+        return engageFire.getUser();
     };
 };
 export var Collection = (value) => {

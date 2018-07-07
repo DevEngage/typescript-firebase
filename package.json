@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "publish":"npm publish --access public"
+    "test": "tsc && mocha -r ts-node/register tests/**/*.spec.ts",
+    "publish": "npm publish --access public"
   },
   "private": false,
   "repository": {
@@ -18,12 +18,20 @@
     "firebase"
   ],
   "dependencies": {
-    "firebase": "4.11.0"
+    "firebase": "5.2.0",
+    "typescript": "^2.9.2"
   },
   "author": "DevEngage (James Brinkerhoff)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DevEngage/typescript-firebase/issues"
   },
-  "homepage": "https://github.com/DevEngage/typescript-firebase#readme"
+  "homepage": "https://github.com/DevEngage/typescript-firebase#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.4",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.0"
+  }
 }
